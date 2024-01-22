@@ -16,7 +16,7 @@ output_dir=${13}
 
 
 # Create an array of DM values
-dm_values=($(seq -f "%.2f" $dm_low 0.05 $dm_high))
+dm_values=($(seq -f "%.2f" $dm_low 0.1 $dm_high))
 # Extract the output file base name from $output_dir
 output_file_base=$(echo "$output_dir" | awk -F '/' '{print $(NF-2)"_"$(NF-1)"_"$NF}' | sed 's/\//_/g')
 
@@ -24,15 +24,25 @@ output_file_base=$(echo "$output_dir" | awk -F '/' '{print $(NF-2)"_"$(NF-1)"_"$
 output_file_base="${output_file_base}_DM"
 # Iterate through DM values to check if the corresponding files exist
 all_files_exist=true
+# total files to check
+total_files=${#dm_values[@]}
+# counter
+counter=0
 for dm in "${dm_values[@]}"; do
   filename="${output_dir}/${output_file_base}${dm}.dat"
   
   # If the file doesn't exist or is empty, set the flag to false and break the loop
   if [ ! -s "$filename" ]; then
+    echo "File $filename does not exist or is empty."
     all_files_exist=false
-    break
+#    break
   fi
+  counter=$((counter+1))
 done
+
+# files that exist out of the total
+files_exist=$counter
+echo "Files that exist: $files_exist out of $total_files"
 
 if $all_files_exist; then
   echo "All files exist, exiting."

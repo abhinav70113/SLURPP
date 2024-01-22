@@ -192,11 +192,12 @@ check_job_submission_limit () {
 }
 
 
-singularity exec -H $HOME:/home1 -B $mount_path:$mount_path $singularity_image_path python ${code_directory}/create_slurm_jobs.py -s ${code_directory}/$slurm_config_file -p ${code_directory}/$pm_config_file -o $obs_file 
+singularity exec -H $HOME:/home1 -B $mount_path:$mount_path $singularity_image_path python ${code_directory}/create_slurm_jobs_pulsarnet.py -s ${code_directory}/$slurm_config_file -p ${code_directory}/$pm_config_file -o $obs_file 
 
-exit 0
+#exit 0
 source ${code_directory}/slurm_jobs_${CLUSTER}_${EPOCH}_${BEAM}.sh
 
+# Edit: Fold jobs were never created for PulsarNet
 
 fold_script_filename=${CLUSTER}/${EPOCH}/${BEAM}/05_FOLDING/${CLUSTER}_${EPOCH}_${BEAM}/script_fold.txt
 fold_batch_number=1
@@ -255,6 +256,6 @@ while true; do
 done
 
 #delete dat files after folding
-rm -rf ${code_directory}/${CLUSTER}/${EPOCH}/${BEAM}/03_DEDISPERSION/${CLUSTER}_${EPOCH}_${BEAM}/full/ck00/*.dat
+#rm -rf ${code_directory}/${CLUSTER}/${EPOCH}/${BEAM}/03_DEDISPERSION/${CLUSTER}_${EPOCH}_${BEAM}/full/ck00/*.dat
 
 

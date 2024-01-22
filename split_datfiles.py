@@ -16,7 +16,7 @@ def split_dat_file_into_chunks(datfile, output_datfile, numout, working_dir, sta
     os.chdir(working_dir)
    
 
-    split_cmd = 'prepdata -nobary -dm 0 -start %.2f -numout %d -o %s %s' % (start_fraction, numout, output_datfile_name, datfile_name)
+    split_cmd = 'prepdata -nobary -dm 0 -start %.2f -numout %d -o %s %s' % (start_fraction, numout, output_datfile, datfile_name)
     subprocess.check_output(split_cmd, shell=True)
     #print(split_cmd) 
     
