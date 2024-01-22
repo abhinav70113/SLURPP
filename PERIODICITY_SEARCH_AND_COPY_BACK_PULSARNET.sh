@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Edit: sing_image should be from the pulsarnet singularity image
 sing_image=$1
 data_dir=$2
 code_dir=$3
@@ -23,7 +22,6 @@ inf_file=${dat_file::-4}.inf
 base_name=$(basename "$dat_file")
 file_string=$(echo "$base_name" | awk -F'_' '{print $1"_"$2"_"$3}')_${segment}_${chunk}
 dm_value="DM${base_name##*DM}"; dm_value=${dm_value%.dat}
-# Edit: Check if this is indeed the output format
 output_search_file=${output_dir}/${file_string}_${dm_value}_PulsarNet.txt
 # output_search_file=${output_dir}/${file_string}_${dm_value}_ACCEL_${zmax}.txtcand
 

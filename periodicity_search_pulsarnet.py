@@ -63,7 +63,7 @@ def periodicity_search_pulsarnet(data,flo,fhi,working_dir,pulsarnet_code_dir, si
         subprocess.check_output('echo PulsarNet code path does not exist', shell=True)
         sys.exit(1)
     
-    # Edit: Do not create these files if they already exist
+    # Edit: An fft file is never expected
     if remove_fft_files:
       os.remove(data)
     if remove_dat_files:
@@ -107,4 +107,4 @@ if __name__ == '__main__':
     mkdir_p(working_dir)
     
     # Edit: fft and dat delete flags are set to False here. There wont be any fft files created by pulsarnet, so do not comment out the fft flag
-    periodicity_search_pulsarnet(data, flo, fhi, working_dir, pulsarnet_code_dir, sing_image_pulsarnet, data_dir, log_out,log_err,remove_fft_files=False, remove_dat_files=False, accel_search_gpu_flag=gpu_flag)
+    periodicity_search_pulsarnet(data, flo, fhi, working_dir, pulsarnet_code_dir, sing_image_pulsarnet, data_dir, log_out,log_err,remove_fft_files=False, remove_dat_files=True, accel_search_gpu_flag=gpu_flag)
