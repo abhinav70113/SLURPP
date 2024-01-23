@@ -1,4 +1,4 @@
-# **SLURM PULSARMINER PULSARNET**
+# **SLURPP: SLURm Pulsarminer Pulsarnet**
 This repository contains the necessary files to run PulsarNet on a HPC cluster using SLURM. Forked originally from [SLURM Pulsarminer](https://github.com/vishnubk/SLURM_PULSARMINER.git)
 
 # **SLURM Pulsarminer: Streamlined Binary Pulsar Search Processing**
@@ -17,11 +17,13 @@ Many of the core routines are predominantly sourced from **PRESTO** or **Pulsarm
 
 Follow the steps below to initiate **SLURM Pulsarminer**:
 
-1. Modify your standard Pulsarminer config file. For reference, view the example in "sample_M30.config".
+1. Setup the [PulsarNet](https://github.com/abhinav70113/PulsarNet.git) code.
 
-2. Adjust the "slurm_config.cfg" to match your cluster's specifications. Remember to include the absolute path of your Singularity image and specific mount paths for your data.
+2. Modify your standard Pulsarminer config file. For reference, view the example in "sample_M30.config".
 
-3. Execute the SLURM Pulsarminer launcher script with your Pulsarminer config file and your observation file. 
+3. Adjust the "slurm_config.cfg" to match your cluster's specifications. Remember to include the absolute path of your Singularity image and specific mount paths for your data.
+
+4. Execute the SLURM Pulsarminer launcher script with your Pulsarminer config file and your observation file. 
 
    Note: It's advised to execute this script within a tmux or screen session for uninterrupted operations since you will be launching hundreds to thousands of job per observation depending on your search range.
 
@@ -66,8 +68,7 @@ These edits will be performed in the near future. Before running the code, watch
 4. Verbosity level cant be given explicitly from the lauch script 
 5. There is no functionality to see the progress bar of how many accel search files have been completed 
 6. CandyJar bug: pics_meerkat_l_sband_combined_best_recall,pics_palfa_meerkat_l_sband_best_fscore 
-
-        
+7. CandyJar bug: Every time, "get" is clicked, the csv is not refreshed but added to the previously loaded csv.
 
 ## Additional Resources
 
